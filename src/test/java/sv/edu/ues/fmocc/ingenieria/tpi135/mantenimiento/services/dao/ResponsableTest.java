@@ -10,6 +10,7 @@ package sv.edu.ues.fmocc.ingenieria.tpi135.mantenimiento.services.dao;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
@@ -21,21 +22,15 @@ import sv.edu.ues.fmocc.ingenieria.tpi135.mantenimiento.mantenimientolib.entity.
  * @author ale
  */
 public class ResponsableTest {
-    
-    private ResponsableFacade rf;
+
     
     @Rule
     public EntityManagerProvider emp = EntityManagerProvider.persistenceUnit("mantenimientoTestPU");
     
-    @BeforeClass
-    public void init(){
-        ResponsableFacade rf = new ResponsableFacade();
-        Whitebox.setInternalState(rf, "em", emp.em());
-    }
-    
-    
     @Test
     public void findByName(){
+        ResponsableFacade rf = new ResponsableFacade();
+        Whitebox.setInternalState(rf, "em", emp.em());
         rf.getEntityManager().getTransaction().begin();
         
         Responsable nuevo1 = new Responsable(1, "Juanito", "Estuvo aqui", true);

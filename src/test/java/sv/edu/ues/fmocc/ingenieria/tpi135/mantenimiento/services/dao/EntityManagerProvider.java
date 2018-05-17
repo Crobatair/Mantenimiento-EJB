@@ -20,6 +20,8 @@ import org.junit.runners.model.Statement;
  *
  * @author ale
  */
+ 
+
 public class EntityManagerProvider implements TestRule {
 
     private EntityManager em;
@@ -44,30 +46,13 @@ public class EntityManagerProvider implements TestRule {
 
             @Override
             public void evaluate() throws Throwable {
-                
                 base.evaluate();
-                
                 em.clear();
                 em.close();
             }
 
         };
     }
-    
-    /**
-     *
-     * @param em
-     */
-    public void beginTransaction(EntityManager em){
-        tx=em.getTransaction();
-        tx.begin();
-    }
-    
-    public void closeTransaction(EntityManager em){
-        
-        
-    }
-    
-    
-    
 }
+    
+    

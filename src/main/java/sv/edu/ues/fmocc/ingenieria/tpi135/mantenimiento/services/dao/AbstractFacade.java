@@ -100,4 +100,17 @@ public abstract class AbstractFacade<T> {
         return ((Long) q.getSingleResult()).intValue();
     }
     
+    public List<T> findRango(int first, int pagesize){
+        javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+        cq.select(cq.from(entityClass));
+        javax.persistence.Query q = getEntityManager().createQuery(cq);
+        q.setMaxResults(first+pagesize);
+        q.setFirstResult(first);
+        return q.getResultList();
+        
+        
+    }
+    
+    
+    
 }

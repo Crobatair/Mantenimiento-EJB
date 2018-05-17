@@ -34,5 +34,7 @@ public interface AbstractFacadeInterface<T> {
 
     int count();
     
+    List<T> findRango(int first, int pagesize);
+    
     
 }
